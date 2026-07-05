@@ -36,11 +36,10 @@
         .scene { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1rem; text-align: center; z-index: 2; opacity: 0; pointer-events: none; transition: opacity var(--transition-speed) ease-in-out, transform var(--transition-speed) ease-in-out; transform: translateY(20px) scale(0.98); }
         .scene.active { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
         
-        /* تمت إزالة المربع الأبيض وتوسيع المساحة */
         .card { padding: 2rem 1rem; width: 100%; max-width: 500px; display: flex; flex-direction: column; align-items: center; gap: 2rem; }
-        h2 { font-size: 1.8rem; font-weight: 700; color: var(--text-dark); line-height: 1.5; }
+        h2 { font-size: 1.8rem; font-weight: 700; color: var(--text-dark); line-height: 1.5; margin-bottom: 0.5rem; }
         
-        .btn { font-family: var(--font-main); border: none; padding: 0.9rem 2.2rem; font-size: 1.15rem; font-weight: 700; border-radius: 50px; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
+        .btn { font-family: var(--font-main); border: none; padding: 0.9rem 2.2rem; font-size: 1.15rem; font-weight: 700; border-radius: 50px; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 8px 20px rgba(0,0,0,0.06); z-index: 5; }
         .btn-primary { background-color: var(--dark-pink); color: white; }
         .btn-secondary { background-color: transparent; color: var(--dark-pink); border: 2px solid var(--primary-pink); }
         .btn-full { width: 100%; margin-top: 1rem; }
@@ -102,26 +101,13 @@
         .letter-footer { text-align: left; font-weight: 700; color: var(--dark-pink); font-size: 1.2rem; margin-bottom: 1.5rem; }
 
         /* ==========================================
-           9. SCENE 5: GIFTS MENU (IMAGES NOW)
+           9. SCENE 5: GIFTS MENU
            ========================================== */
         .gifts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; margin-top: 1rem; }
-        
-        .gift-img { 
-            width: 100%; 
-            aspect-ratio: 1 / 1; 
-            object-fit: cover; 
-            border-radius: 16px; 
-            cursor: pointer; 
-            box-shadow: 0 8px 20px rgba(164, 119, 126, 0.2); 
-            transition: transform 0.3s;
-            animation: gentle-shake 3s infinite ease-in-out;
-        }
+        .gift-img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 16px; cursor: pointer; box-shadow: 0 8px 20px rgba(164, 119, 126, 0.2); transition: transform 0.3s; animation: gentle-shake 3s infinite ease-in-out; }
         .gift-img:hover { transform: scale(1.05); }
-
-        .gift-img:nth-child(1) { animation-delay: 0s; }
-        .gift-img:nth-child(2) { animation-delay: 0.7s; }
-        .gift-img:nth-child(3) { animation-delay: 1.4s; }
-        .gift-img:nth-child(4) { animation-delay: 2.1s; }
+        .gift-img:nth-child(1) { animation-delay: 0s; } .gift-img:nth-child(2) { animation-delay: 0.7s; }
+        .gift-img:nth-child(3) { animation-delay: 1.4s; } .gift-img:nth-child(4) { animation-delay: 2.1s; }
 
         @keyframes gentle-shake {
             0%, 100% { transform: rotate(0deg); }
@@ -129,8 +115,6 @@
             50% { transform: rotate(3deg) translateY(0px); }
             75% { transform: rotate(-1deg) translateY(-1px); }
         }
-
-        .gift-content { font-size: 1.1rem; color: var(--text-muted); margin: 2rem 0; line-height: 1.6; }
 
         /* ==========================================
            10. EFFECTS & ANIMATIONS
@@ -144,16 +128,22 @@
         @keyframes fall { 0% { transform: translateY(-50px) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
 
         /* ==========================================
-           تنسيقات الهدايا الأربعة
+           تنسيقات الهدايا 
            ========================================== */
 
-        /* الهدية 1: Bugatti */
-        .bugatti-container { text-align: center; width: 100%; }
-        .bugatti-logo { width: 120px; margin-bottom: 20px; animation: bounce 2s infinite ease-in-out; }
-        .progress-wrapper { width: 100%; background-color: #f0e6e8; border-radius: 20px; overflow: hidden; height: 25px; display: none; margin: 20px 0; border: 1px solid var(--primary-pink); }
-        .progress-bar { width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary-pink), var(--dark-pink)); transition: width 0.4s ease; }
-        .status-msg { font-weight: 700; color: var(--dark-pink); min-height: 25px; margin-bottom: 10px; font-size: 1.1rem; }
-        .fail-msg { color: #d63031; font-weight: 900; font-size: 1.3rem; display: none; margin-top: 15px; animation: pulse 1s infinite alternate; }
+        /* الهدية 1: Bugatti Contract */
+        .bugatti-container { text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        .bugatti-logo { width: 100px; animation: bounce 2s infinite ease-in-out; }
+        
+        .contract-box { background: #fff; border: 3px double #D4AF37; border-radius: 8px; padding: 20px; width: 100%; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .contract-title { color: #D4AF37; font-weight: 900; font-size: 1.4rem; margin-bottom: 15px; }
+        .contract-text { font-size: 1.05rem; line-height: 1.6; margin-bottom: 25px; color: #555; }
+        
+        .evade-area { position: relative; height: 160px; width: 100%; border-top: 1px dashed #eee; padding-top: 20px; }
+        .btn-dodge { position: absolute; transition: top 0.2s ease-out, right 0.2s ease-out; font-size: 1rem; padding: 0.7rem 1.5rem; z-index: 10; right: 5%; top: 20px; }
+        .btn-reject { position: absolute; font-size: 1rem; padding: 0.7rem 1.5rem; bottom: 10px; left: 50%; transform: translateX(-50%); z-index: 5; background-color: #eee; border: none; color: var(--text-dark); }
+        
+        .bugatti-result { display: none; margin-top: 30px; font-size: 1.3rem; color: #d63031; font-weight: 900; animation: pulse 1.5s infinite alternate; line-height: 1.6; }
 
         /* الهدية 2: العداد */
         .counter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; direction: rtl; margin-bottom: 20px; }
@@ -162,25 +152,43 @@
         .c-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 700; }
         .counter-quote { font-size: 1.1rem; color: var(--text-dark); margin-top: 15px; font-weight: 500; }
 
-        /* الهدية 3: الشجرة والموسيقى */
-        .gift3-layout { display: flex; flex-direction: column; gap: 20px; width: 100%; }
-        .music-player { background: #FFFEFC; border: 1px solid var(--primary-pink); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; align-items: center; box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
-        .record-cover { width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--dark-pink); object-fit: cover; animation: spin 8s linear infinite; animation-play-state: paused; margin-bottom: 15px; }
-        .record-cover.playing { animation-play-state: running; }
-        .player-controls { display: flex; gap: 15px; align-items: center; width: 100%; margin-top: 10px; }
-        .play-btn { background: var(--dark-pink); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; display: flex; justify-content: center; align-items: center; }
-        .music-progress { flex: 1; -webkit-appearance: none; height: 6px; border-radius: 5px; background: #f0e6e8; outline: none; }
-        .music-progress::-webkit-slider-thumb { -webkit-appearance: none; width: 15px; height: 15px; border-radius: 50%; background: var(--dark-pink); cursor: pointer; }
+        /* الهدية 3: الشجرة والموسيقى أفقيًا */
+        .gift-3-card { max-width: 700px !important; width: 95%; }
+        .gift3-layout { display: flex; flex-direction: row; gap: 15px; width: 100%; align-items: center; justify-content: center; margin-top: 10px; }
+        
+        .tree-section { flex: 1.2; display: flex; justify-content: center; align-items: center; }
+        .music-section { flex: 0.8; }
 
-        .tree-container { position: relative; width: 100%; height: 350px; background: transparent; border-radius: 16px; overflow: hidden; border: 1px solid var(--primary-pink); }
-        .tree-svg { width: 100%; height: 100%; opacity: 0.6; object-fit: cover; }
-        .polaroid { position: absolute; padding: 5px 5px 15px 5px; background: white; box-shadow: 0 4px 10px rgba(0,0,0,0.2); cursor: pointer; transform-origin: top center; transition: filter 0.3s; z-index: 2; border: 1px solid #ddd; }
-        .polaroid img { width: 60px; height: 60px; object-fit: cover; border-radius: 2px; }
-        .polaroid:hover { filter: brightness(1.1); z-index: 5; }
-        .p1 { top: 20%; left: 15%; animation: swing 3s infinite ease-in-out alternate; }
-        .p2 { top: 40%; right: 20%; animation: swing 4s infinite ease-in-out alternate-reverse; }
-        .p3 { top: 10%; right: 40%; animation: swing 3.5s infinite ease-in-out alternate; }
-        .p4 { top: 55%; left: 30%; animation: swing 4.5s infinite ease-in-out alternate-reverse; }
+        .tree-wrapper { position: relative; width: 100%; max-width: 320px; aspect-ratio: 3/4; margin: 0 auto; }
+        .tree-svg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 15px 15px rgba(0,0,0,0.08)); }
+        
+        .polaroid { position: absolute; padding: 5px 5px 15px 5px; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.25); cursor: pointer; transition: transform 0.3s, z-index 0s; z-index: 5; border: 1px solid #eee; border-radius: 2px; }
+        .polaroid img { width: 50px; height: 50px; object-fit: cover; }
+        .polaroid:hover { transform: scale(1.2) !important; z-index: 20; }
+        
+        /* تثبيت دقيق للصور على أغصان الـ SVG */
+        .p1 { top: 22%; left: 78%; transform: translate(-50%, -50%) rotate(8deg); }
+        .p2 { top: 38%; left: 18%; transform: translate(-50%, -50%) rotate(-6deg); }
+        .p3 { top: 58%; left: 82%; transform: translate(-50%, -50%) rotate(-12deg); }
+        .p4 { top: 62%; left: 25%; transform: translate(-50%, -50%) rotate(10deg); }
+
+        .music-player { background: #FFFEFC; border: 1px solid var(--primary-pink); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; align-items: center; box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+        .record-cover { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--dark-pink); object-fit: cover; animation: spin 8s linear infinite; animation-play-state: paused; margin-bottom: 15px; }
+        .record-cover.playing { animation-play-state: running; }
+        .player-controls { display: flex; gap: 10px; align-items: center; width: 100%; margin-top: 15px; }
+        .play-btn { background: var(--dark-pink); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 1rem; cursor: pointer; display: flex; justify-content: center; align-items: center; }
+        .music-progress { flex: 1; -webkit-appearance: none; height: 5px; border-radius: 5px; background: #f0e6e8; outline: none; }
+        .music-progress::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--dark-pink); cursor: pointer; }
+
+        @media (max-width: 550px) {
+            .gift3-layout { gap: 5px; }
+            .polaroid img { width: 35px; height: 35px; }
+            .polaroid { padding: 3px 3px 10px 3px; }
+            .music-player { padding: 12px; }
+            .record-cover { width: 70px; height: 70px; }
+            .player-controls { flex-direction: column; gap: 8px; }
+            .music-progress { width: 100%; }
+        }
 
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); display: flex; justify-content: center; align-items: center; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; padding: 20px; }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
@@ -192,7 +200,7 @@
         .msg-text { font-size: 1.3rem; color: var(--dark-pink); font-weight: 700; line-height: 1.6; text-align: center; opacity: 1; transition: opacity 0.3s; }
 
         @keyframes spin { 100% { transform: rotate(360deg); } }
-        @keyframes swing { 0% { transform: rotate(-8deg); } 100% { transform: rotate(8deg); } }
+        
     </style>
 </head>
 <body>
@@ -272,20 +280,26 @@
 
     <section id="gift-1" class="scene">
         <div class="card">
-            <h2>🏎️ شركة Bugatti</h2>
             <div class="bugatti-container">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Bugatti_logo.svg" alt="Bugatti" class="bugatti-logo">
-                <p style="color: var(--text-muted); margin-bottom: 1rem;">السيارة اللي دائماً بتطلبيها... اليوم رح نشتري الشركة كاملة!</p>
-                
-                <div class="status-msg" id="bugatti-status"></div>
-                <div class="progress-wrapper" id="bugatti-progress-container">
-                    <div class="progress-bar" id="bugatti-bar"></div>
+                <div id="bugatti-ui" style="width: 100%;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Bugatti_logo.svg" alt="Bugatti" class="bugatti-logo">
+                    <div class="contract-box">
+                        <div class="contract-title">عقد تنازل رسمي</div>
+                        <p class="contract-text">
+                            نحن، شركة Bugatti Motors، نعرض عليكِ استلام إدارة وكيان الشركة بالكامل تقديراً لكِ في هذا اليوم المميز.<br><br>يرجى تحديد قرارك أدناه:
+                        </p>
+                        <div class="evade-area" id="evade-area">
+                            <button class="btn btn-primary btn-dodge" id="btn-accept">موافقة على العرض</button>
+                            <button class="btn btn-secondary btn-reject" id="btn-reject" onclick="rejectBugatti()">رفض العرض</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="fail-msg" id="bugatti-fail">❌ فشل شراء الشركة<br><span style="font-size: 0.9rem; color: var(--text-muted);">الرصيد الحالي لا يسمح بشراء شركة بمئات الملايين 😂❤️</span></div>
-
-                <button class="btn btn-primary btn-full" id="btn-buy-bugatti" onclick="startBugattiPurchase()">شراء شركة Bugatti</button>
+                
+                <div class="bugatti-result" id="bugatti-result">
+                    خسارة 😓<br>خلاص بخلي عبدالله يشتريلك الشركة
+                </div>
             </div>
-            <button class="btn btn-secondary btn-full" onclick="backToGifts('gift-1')">الرجوع للهدايا</button>
+            <button class="btn btn-secondary btn-full" onclick="backToGifts('gift-1')" style="margin-top: auto;">الرجوع للهدايا</button>
         </div>
     </section>
 
@@ -308,36 +322,51 @@
     </section>
 
     <section id="gift-3" class="scene">
-        <div class="card" style="max-width: 600px;">
+        <div class="card gift-3-card">
             <h2>كل غصن… يحمل ذكرى 🌳</h2>
             
             <div class="gift3-layout">
-                <div class="music-player">
-                    <img src="https://via.placeholder.com/150/E8B4B8/FFFFFF?text=صورة+الأغنية" id="record" class="record-cover" alt="Cover">
-                    <h3 style="margin: 0; font-size: 1.2rem;">اسم الأغنية</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin: 5px 0;">اسم الفنان</p>
-                    
-                    <audio id="bg-audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
-                    
-                    <div class="player-controls">
-                        <button class="play-btn" onclick="toggleAudio()" id="play-btn">▶</button>
-                        <input type="range" class="music-progress" id="audio-slider" value="0" min="0" max="100" onchange="seekAudio()">
+                <div class="tree-section">
+                    <div class="tree-wrapper">
+                        <svg class="tree-svg-img" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 140 380 C 140 300 145 250 150 200 C 155 250 160 300 160 380 Z" fill="#6B4E41"/>
+                            <path d="M 145 250 C 110 210 60 220 30 200 C 50 190 90 200 149 230" fill="#6B4E41"/>
+                            <path d="M 148 180 C 130 140 90 120 50 90 C 70 100 110 130 150 160" fill="#6B4E41"/>
+                            <path d="M 152 170 C 180 130 220 100 270 70 C 240 90 200 120 151 190" fill="#6B4E41"/>
+                            <path d="M 153 230 C 190 200 250 210 280 190 C 240 180 200 190 151 210" fill="#6B4E41"/>
+                            <g fill="#E8B4B8" opacity="0.6">
+                                <circle cx="45" cy="200" r="30"/>
+                                <circle cx="65" cy="90" r="35"/>
+                                <circle cx="255" cy="75" r="35"/>
+                                <circle cx="270" cy="190" r="30"/>
+                                <circle cx="150" cy="140" r="40"/>
+                            </g>
+                        </svg>
+                        
+                        <div class="polaroid p1" onclick="openPicModal('https://via.placeholder.com/400/E8B4B8/FFFFFF?text=صورة+1')"><img src="https://via.placeholder.com/60/E8B4B8/FFFFFF?text=1" alt="pic"></div>
+                        <div class="polaroid p2" onclick="openPicModal('https://via.placeholder.com/400/A4777E/FFFFFF?text=صورة+2')"><img src="https://via.placeholder.com/60/A4777E/FFFFFF?text=2" alt="pic"></div>
+                        <div class="polaroid p3" onclick="openPicModal('https://via.placeholder.com/400/E8B4B8/FFFFFF?text=صورة+3')"><img src="https://via.placeholder.com/60/E8B4B8/FFFFFF?text=3" alt="pic"></div>
+                        <div class="polaroid p4" onclick="openPicModal('https://via.placeholder.com/400/A4777E/FFFFFF?text=صورة+4')"><img src="https://via.placeholder.com/60/A4777E/FFFFFF?text=4" alt="pic"></div>
                     </div>
                 </div>
 
-                <div class="tree-container">
-                    <svg class="tree-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-                        <path d="M45,100 C45,80 50,60 50,40 C50,20 40,10 30,0 M50,40 C55,25 65,15 75,5 M50,55 C60,45 70,40 85,35 M48,70 C35,65 25,55 15,45" stroke="#8A7B7E" stroke-width="4" fill="none" stroke-linecap="round"/>
-                    </svg>
-                    
-                    <div class="polaroid p1" onclick="openPicModal('https://via.placeholder.com/400/E8B4B8/FFFFFF?text=صورة+1')"><img src="https://via.placeholder.com/60/E8B4B8/FFFFFF?text=1" alt="pic"></div>
-                    <div class="polaroid p2" onclick="openPicModal('https://via.placeholder.com/400/A4777E/FFFFFF?text=صورة+2')"><img src="https://via.placeholder.com/60/A4777E/FFFFFF?text=2" alt="pic"></div>
-                    <div class="polaroid p3" onclick="openPicModal('https://via.placeholder.com/400/E8B4B8/FFFFFF?text=صورة+3')"><img src="https://via.placeholder.com/60/E8B4B8/FFFFFF?text=3" alt="pic"></div>
-                    <div class="polaroid p4" onclick="openPicModal('https://via.placeholder.com/400/A4777E/FFFFFF?text=صورة+4')"><img src="https://via.placeholder.com/60/A4777E/FFFFFF?text=4" alt="pic"></div>
+                <div class="music-section">
+                    <div class="music-player">
+                        <img src="https://via.placeholder.com/150/E8B4B8/FFFFFF?text=صورة+الأغنية" id="record" class="record-cover" alt="Cover">
+                        <h3 style="margin: 0; font-size: 1.1rem;">اسم الأغنية</h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin: 5px 0;">اسم الفنان</p>
+                        
+                        <audio id="bg-audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+                        
+                        <div class="player-controls">
+                            <button class="play-btn" onclick="toggleAudio()" id="play-btn">▶</button>
+                            <input type="range" class="music-progress" id="audio-slider" value="0" min="0" max="100" onchange="seekAudio()">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <button class="btn btn-secondary btn-full" onclick="backToGifts('gift-3')" style="margin-top: 10px;">الرجوع للهدايا</button>
+            <button class="btn btn-secondary btn-full" onclick="backToGifts('gift-3')" style="margin-top: 15px;">الرجوع للهدايا</button>
         </div>
     </section>
 
@@ -517,13 +546,8 @@
         });
 
         /* ---------------- GIFTS NAVIGATION ---------------- */
-        function openGift(giftId) {
-            navigateToScene('scene-gifts', giftId);
-        }
-
-        function backToGifts(currentGiftId) {
-            navigateToScene(currentGiftId, 'scene-gifts');
-        }
+        function openGift(giftId) { navigateToScene('scene-gifts', giftId); }
+        function backToGifts(currentGiftId) { navigateToScene(currentGiftId, 'scene-gifts'); }
 
         /* ---------------- FX FUNCTIONS ---------------- */
         function createConfetti() {
@@ -561,42 +585,33 @@
            منطق الهدايا الأربعة
            ========================================== */
 
-        // -- الهدية 1: Bugatti --
-        function startBugattiPurchase() {
-            const btn = document.getElementById('btn-buy-bugatti');
-            const progressContainer = document.getElementById('bugatti-progress-container');
-            const bar = document.getElementById('bugatti-bar');
-            const status = document.getElementById('bugatti-status');
-            const failMsg = document.getElementById('bugatti-fail');
+        // -- الهدية 1: عقد Bugatti وهروب الزر --
+        const evadeArea = document.getElementById('evade-area');
+        const btnAccept = document.getElementById('btn-accept');
 
-            btn.style.display = 'none';
-            progressContainer.style.display = 'block';
-            failMsg.style.display = 'none';
-            bar.style.width = '0%';
+        function dodgeAcceptBtn(e) {
+            const areaRect = evadeArea.getBoundingClientRect();
+            const btnRect = btnAccept.getBoundingClientRect();
             
-            const phases = [
-                { time: 500, percent: '15%', text: "جاري التواصل مع المالك..." },
-                { time: 2000, percent: '45%', text: "جاري تحويل الأموال..." },
-                { time: 3500, percent: '75%', text: "البنك يراجع العملية..." },
-                { time: 5000, percent: '95%', text: "تقريباً خلصنا..." },
-                { time: 6500, percent: '100%', text: "اكتمل التحميل!" }
-            ];
+            // الحد الأقصى للمحور X و Y داخل المستطيل المخصص
+            const maxX = areaRect.width - btnRect.width;
+            const maxY = areaRect.height - btnRect.height;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            btnAccept.style.right = `${randomX}px`;
+            btnAccept.style.top = `${randomY}px`;
+        }
 
-            phases.forEach(phase => {
-                setTimeout(() => {
-                    bar.style.width = phase.percent;
-                    status.innerText = phase.text;
-                    if (phase.percent !== '100%') createHeartsBurst(); // تأثيرات خفيفة أثناء التحميل
-                }, phase.time);
-            });
+        btnAccept.addEventListener('mouseover', dodgeAcceptBtn);
+        btnAccept.addEventListener('touchstart', (e) => { e.preventDefault(); dodgeAcceptBtn(); }, {passive: false});
 
-            // إظهار رسالة الفشل بعد اكتمال التحميل
-            setTimeout(() => {
-                progressContainer.style.display = 'none';
-                status.style.display = 'none';
-                failMsg.style.display = 'block';
-                if(navigator.vibrate) navigator.vibrate([100, 50, 100]); // اهتزاز بسيط لو الهاتف يدعم
-            }, 7500);
+        function rejectBugatti() {
+            document.getElementById('bugatti-ui').style.display = 'none';
+            const resultMsg = document.getElementById('bugatti-result');
+            resultMsg.style.display = 'block';
+            createHeartsBurst();
         }
 
         // -- الهدية 2: العداد الزمني --
@@ -605,7 +620,7 @@
         function updateCounter() {
             const now = new Date().getTime();
             let diff = now - startDate;
-            if (diff < 0) diff = 0; // في حال كان التاريخ في المستقبل أثناء التجربة
+            if (diff < 0) diff = 0; 
 
             const y = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
             const m = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
@@ -621,7 +636,7 @@
             document.getElementById('c-mins').innerText = min;
             document.getElementById('c-secs').innerText = s;
         }
-        setInterval(updateCounter, 1000); // تحديث حي كل ثانية
+        setInterval(updateCounter, 1000); 
 
         // -- الهدية 3: الموسيقى والصور --
         const audio = document.getElementById('bg-audio');
@@ -647,11 +662,9 @@
             }
         });
 
-        function seekAudio() {
-            audio.currentTime = (audioSlider.value / 100) * audio.duration;
-        }
+        function seekAudio() { audio.currentTime = (audioSlider.value / 100) * audio.duration; }
 
-        // نافذة عرض الصور (Modal)
+        // نافذة عرض الصور 
         const modal = document.getElementById('pic-modal');
         const modalImg = document.getElementById('modal-img');
 
@@ -659,11 +672,8 @@
             modalImg.src = imgSrc;
             modal.classList.add('active');
         }
-        function closePicModal() {
-            modal.classList.remove('active');
-        }
+        function closePicModal() { modal.classList.remove('active'); }
 
-        // إيقاف الأغنية عند الرجوع للهدايا
         const originalBackToGifts = backToGifts;
         backToGifts = function(currentGiftId) {
             if (currentGiftId === 'gift-3') {
@@ -693,15 +703,9 @@
         function showRandomMessage() {
             const msgBox = document.getElementById('random-msg');
             let newIndex;
-            
-            // التأكد من عدم تكرار نفس الرسالة مرتين متتاليتين
-            do {
-                newIndex = Math.floor(Math.random() * messages.length);
-            } while (newIndex === lastMsgIndex);
-            
+            do { newIndex = Math.floor(Math.random() * messages.length); } while (newIndex === lastMsgIndex);
             lastMsgIndex = newIndex;
             
-            // أنيميشن تغيير النص
             msgBox.style.opacity = '0';
             setTimeout(() => {
                 msgBox.innerText = messages[newIndex];
